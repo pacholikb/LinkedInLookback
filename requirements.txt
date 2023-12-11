@@ -5,4 +5,4 @@ requests
 datetime
 markdownlit
 time
-https://github.com/ObservedObserver/streamlit-shadcn-ui
+git+https://github.com/ObservedObserver/streamlit-shadcn-ui.git
