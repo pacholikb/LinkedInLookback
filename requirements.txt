@@ -4,5 +4,4 @@ numpy
 requests
 datetime
 markdownlit
-time
-git+https://github.com/ObservedObserver/streamlit-shadcn-ui.git
+streamlit-shadcn-ui
