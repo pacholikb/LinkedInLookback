@@ -6,7 +6,6 @@ import datetime
 from markdownlit import mdlit
 import time
 
-
 def app():
     st.set_page_config(page_icon=":eyes:",page_title="2023 LinkedIn Lookback")
 
@@ -19,23 +18,21 @@ value = ui.tabs(options=['Lenny Rachitsky', 'Angela Duckworth', 'Dan Martell', '
 
 with ui.card(key="image"):
     if value == "Lenny Rachitsky":
-        ui.element("img", src="/Users/brocpacholik/LinkedInLookback/lenny_rachitsky.png", className="w-full")
-        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/lennyrachitsky", className="mt-2", key="btn2")
+        ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/f47d7444-87a0-4916-a01e-ce1ca9cc3a00/public", className="w-full")
+        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/lennyrachitsky", className="mt-2", variant="outline", key="btn2")
     elif value == "Angela Duckworth":
-        ui.element("img", src="./angela_duckworth.png", className="w-full")
-        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/angeladuckworth/", className="mt-2", key="btn2")
+        ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/f2636543-f09d-4af1-938f-81dbfe929000/public", className="w-full")
+        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/angeladuckworth/", className="mt-2", variant="outline", key="btn2")
     elif value == "Dan Martell":
-        ui.element("img", src="./dan_martell.png", className="w-full")
-        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/dmartell/", className="mt-2", key="btn2")
+        ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/eaf0dbc1-d727-40a9-124f-f4264d241a00/public", className="w-full")
+        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/dmartell/", className="mt-2", variant="outline", key="btn2")
     elif value == "Alex Hormozi":
-        ui.element("img", src="./alex_hormozi.png", className="w-full")
-        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/alexhormozi", className="mt-2", key="btn2")
+        ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/5a2a6966-71c6-4330-b6d9-816ce0d74400/public", className="w-full")
+        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/alexhormozi", className="mt-2", variant="outline", key="btn2")
     elif value == "Steven Bartlett":
-        ui.element("img", src="./steven_bartlett.png", className="w-full")
-        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/stevenbartlett-123", className="mt-2", key="btn2")
+        ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/d7c7653f-0f5f-45d4-4821-57c9f1666100/public", className="w-full")
+        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/stevenbartlett-123", className="mt-2", variant="outline", key="btn2")
 
-#if not input_value.startswith("https://www.linkedin.com/in"):
-#   st.warning("The post analysis only works with a personal profile URL.")
 
 @st.cache_data()
 def get_posts_data(input_value):
@@ -181,5 +178,3 @@ if clicked:
     # Display the dataframe with the image column inside an expander
     with st.expander("All Post Data"):
         st.dataframe(posts_df, hide_index=True, column_config={"images": image_column})
-
-
