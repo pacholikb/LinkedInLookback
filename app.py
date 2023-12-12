@@ -33,6 +33,9 @@ with st.expander("Examples", expanded=True):
         elif value == "Steven Bartlett":
             ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/d7c7653f-0f5f-45d4-4821-57c9f1666100/public", className="w-full")
             ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/stevenbartlett-123", className="mt-2", variant="outline", key="btn2")
+with st.expander("Instructions", expanded=False):
+        st.markdown("""<div style="position: relative; padding-bottom: calc(59.753501400560225% + 44px); height: 0;"><iframe src=https://app.supademo.com/embed/jHiHwtzQ2foJ8mBhfCrk9 frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>""", unsafe_allow_html=True)
+
 @st.cache_data()
 def get_posts_data(input_value):
     url = "https://fresh-linkedin-profile-data.p.rapidapi.com/get-profile-posts"
@@ -42,7 +45,7 @@ def get_posts_data(input_value):
         "X-RapidAPI-Host": "fresh-linkedin-profile-data.p.rapidapi.com"
     }
     posts_data = []
-    for i in range(10):  # 15 requests to gets 750 posts
+    for i in range(15):  # 15 requests to gets 750 posts
         response = requests.get(url, headers=headers, params=querystring)
         data = response.json()
         if 'paging' not in data:
@@ -180,6 +183,3 @@ if clicked:
     # Display the dataframe with the image and Post Link columns inside an expander
     with st.expander("All Post Data"):
         st.dataframe(posts_df, hide_index=True, column_config={"images": image_column, "Post Link": post_link_column})
-
-    with st.expander("Instructions"):
-        st.markdown("""<div style="position: relative; padding-bottom: calc(59.753501400560225% + 44px); height: 0;"><iframe src=https://app.supademo.com/embed/jHiHwtzQ2foJ8mBhfCrk9 frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>""", unsafe_allow_html=True)
