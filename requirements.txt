@@ -1,6 +1,6 @@
 streamlit==1.29.0
-streamlit-extras==0.3.1
+streamlit-extras
 pandas==2.1.1
 requests==2.31.0
-markdownlit==0.0.1
+markdownlit
 streamlit-shadcn-ui==0.1.18
