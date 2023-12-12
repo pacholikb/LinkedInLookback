@@ -1,7 +1,6 @@
-streamlit
-streamlit-extras
-pandas
-requests
-datetime
-markdownlit
-streamlit-shadcn-ui
+streamlit==1.29.0
+streamlit-extras==0.3.1
+pandas==2.1.1
+requests==2.31.0
+markdownlit==0.0.1
+streamlit-shadcn-ui==0.1.18

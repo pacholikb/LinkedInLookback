@@ -43,7 +43,7 @@ def get_posts_data(input_value):
         "X-RapidAPI-Host": "fresh-linkedin-profile-data.p.rapidapi.com"
     }
     posts_data = []
-    for i in range(15):  # 6 requests to get 300 posts
+    for i in range(15):  # 15 requests to gets 750 posts
         response = requests.get(url, headers=headers, params=querystring)
         data = response.json()
         if 'paging' not in data:
@@ -76,9 +76,9 @@ if clicked:
     progress_text = "Collecting post data. Please be patient, this could take up to a minute."
     my_bar = st.progress(0, text=progress_text)
     for percent_complete in range(100):
-        time.sleep(0.2)  # Increased sleep time to slow down the progress bar
+        time.sleep(0.2)
         my_bar.progress(percent_complete + 1, text=progress_text)
-    time.sleep(1.2)  # Increased sleep time to slow down the progress bar
+    time.sleep(1.2)
     my_bar.empty()
 
     posts_data = get_posts_data(input_value)
