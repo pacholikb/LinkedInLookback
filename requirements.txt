@@ -3,4 +3,5 @@ pandas
 requests
 datetime
 markdownlit
-./streamlit_shadcn_ui
+git+https://github.com/ObservedObserver/streamlit-shadcn-ui.git
+
