@@ -13,6 +13,7 @@ st.title(":eyes: :blue[LinkedIn Lookback]")
 mdlit("""This tool collects LinkedIn post data from a given profile URL (without needing to sign in). It then compares posts and engagements to give you an analysis of content performance.""")
 input_value = st.text_input(placeholder="Enter your LinkedIn profile URL here.", key="input1", label='Enter the URL you want to analyze below and click submit.')
 clicked = ui.button("Submit", key="submit_btn")
+
 with st.expander("Examples", expanded=True):
     value = ui.tabs(options=['Dan Martell', 'Lenny Rachitsky', 'Angela Duckworth', 'Alex Hormozi', 'Steven Bartlett'], default_value='Dan Martell', key="kanaries")
 
@@ -173,6 +174,9 @@ if clicked:
     # Manipulate the 'images' column to extract the image URL
     posts_df['images'] = posts_df['images'].apply(lambda x: x[0]['url'] if x else None)
 
-    # Display the dataframe with the image column inside an expander
+    # Create a new column for the Post Link column
+    post_link_column = st.column_config.LinkColumn(label="Post Link")
+
+    # Display the dataframe with the image and Post Link columns inside an expander
     with st.expander("All Post Data"):
-        st.dataframe(posts_df, hide_index=True, column_config={"images": image_column})
+        st.dataframe(posts_df, hide_index=True, column_config={"images": image_column, "Post Link": post_link_column})
