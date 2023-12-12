@@ -10,30 +10,28 @@ def app():
     st.set_page_config(page_icon=":eyes:",page_title="2023 LinkedIn Lookback")
 
 st.title(":eyes: :blue[LinkedIn Lookback]")
-mdlit("""This app collects your basic LinkedIn post data (without needing to sign in) from the past 2 years. It then compares posts and engagements to give you an analysis and grade of your content performance.""")
-input_value = st.text_input(placeholder="Enter your LinkedIn profile URL here", key="input1", label='Enter the URL of the profile you want to analyze below and click submit.')
+mdlit("""This tool collects LinkedIn post data from a given profile URL (without needing to sign in). It then compares posts and engagements to give you an analysis of content performance.""")
+input_value = st.text_input(placeholder="Enter your LinkedIn profile URL here.", key="input1", label='Enter the URL you want to analyze below and click submit.')
 clicked = ui.button("Submit", key="submit_btn")
-st.text("Example outputs:")
-value = ui.tabs(options=['Lenny Rachitsky', 'Angela Duckworth', 'Dan Martell', 'Alex Hormozi', 'Steven Bartlett'], default_value='Lenny Rachitsky', key="kanaries")
+with st.expander("Examples", expanded=True):
+    value = ui.tabs(options=['Dan Martell', 'Lenny Rachitsky', 'Angela Duckworth', 'Alex Hormozi', 'Steven Bartlett'], default_value='Dan Martell', key="kanaries")
 
-with ui.card(key="image"):
-    if value == "Lenny Rachitsky":
-        ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/f47d7444-87a0-4916-a01e-ce1ca9cc3a00/public", className="w-full")
-        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/lennyrachitsky", className="mt-2", variant="outline", key="btn2")
-    elif value == "Angela Duckworth":
-        ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/f2636543-f09d-4af1-938f-81dbfe929000/public", className="w-full")
-        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/angeladuckworth/", className="mt-2", variant="outline", key="btn2")
-    elif value == "Dan Martell":
-        ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/eaf0dbc1-d727-40a9-124f-f4264d241a00/public", className="w-full")
-        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/dmartell/", className="mt-2", variant="outline", key="btn2")
-    elif value == "Alex Hormozi":
-        ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/5a2a6966-71c6-4330-b6d9-816ce0d74400/public", className="w-full")
-        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/alexhormozi", className="mt-2", variant="outline", key="btn2")
-    elif value == "Steven Bartlett":
-        ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/d7c7653f-0f5f-45d4-4821-57c9f1666100/public", className="w-full")
-        ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/stevenbartlett-123", className="mt-2", variant="outline", key="btn2")
-
-
+    with ui.card(key="image"):
+        if value == "Dan Martell":
+            ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/eaf0dbc1-d727-40a9-124f-f4264d241a00/public", className="w-full")
+            ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/dmartell/", className="mt-2", variant="outline", key="btn2")
+        elif value == "Lenny Rachitsky":
+            ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/f47d7444-87a0-4916-a01e-ce1ca9cc3a00/public", className="w-full")
+            ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/lennyrachitsky", className="mt-2", variant="outline", key="btn2")
+        elif value == "Angela Duckworth":
+            ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/f2636543-f09d-4af1-938f-81dbfe929000/public", className="w-full")
+            ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/angeladuckworth/", className="mt-2", variant="outline", key="btn2")
+        elif value == "Alex Hormozi":
+            ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/5a2a6966-71c6-4330-b6d9-816ce0d74400/public", className="w-full")
+            ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/alexhormozi", className="mt-2", variant="outline", key="btn2")
+        elif value == "Steven Bartlett":
+            ui.element("img", src="https://imagedelivery.net/RlQ8ECHcJvQBh2Syjbr00g/d7c7653f-0f5f-45d4-4821-57c9f1666100/public", className="w-full")
+            ui.element("link_button", text=value + " LinkedIn", url="https://www.linkedin.com/in/stevenbartlett-123", className="mt-2", variant="outline", key="btn2")
 @st.cache_data()
 def get_posts_data(input_value):
     url = "https://fresh-linkedin-profile-data.p.rapidapi.com/get-profile-posts"
@@ -43,7 +41,7 @@ def get_posts_data(input_value):
         "X-RapidAPI-Host": "fresh-linkedin-profile-data.p.rapidapi.com"
     }
     posts_data = []
-    for i in range(15):  # 15 requests to gets 750 posts
+    for i in range(10):  # 15 requests to gets 750 posts
         response = requests.get(url, headers=headers, params=querystring)
         data = response.json()
         if 'paging' not in data:
