@@ -180,3 +180,6 @@ if clicked:
     # Display the dataframe with the image and Post Link columns inside an expander
     with st.expander("All Post Data"):
         st.dataframe(posts_df, hide_index=True, column_config={"images": image_column, "Post Link": post_link_column})
+
+    with st.expander("Instructions"):
+        st.markdown("""<div style="position: relative; padding-bottom: calc(59.753501400560225% + 44px); height: 0;"><iframe src=https://app.supademo.com/embed/jHiHwtzQ2foJ8mBhfCrk9 frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>""", unsafe_allow_html=True)
