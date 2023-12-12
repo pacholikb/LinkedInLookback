@@ -13,7 +13,7 @@ st.title(":eyes: :blue[LinkedIn Lookback]")
 mdlit("""This app collects your basic LinkedIn post data (without needing to sign in) from the past 2 years. It then compares posts and engagements to give you an analysis and grade of your content performance.""")
 input_value = st.text_input(placeholder="Enter your LinkedIn profile URL here", key="input1", label='Enter the URL of the profile you want to analyze below and click submit.')
 clicked = ui.button("Submit", key="submit_btn")
-st.text("Here are some examples:")
+st.text("Example outputs:")
 value = ui.tabs(options=['Lenny Rachitsky', 'Angela Duckworth', 'Dan Martell', 'Alex Hormozi', 'Steven Bartlett'], default_value='Lenny Rachitsky', key="kanaries")
 
 with ui.card(key="image"):
